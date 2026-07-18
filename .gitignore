@@ -1,0 +1,6 @@
+.env
+vagas_estagio.db
+__pycache__/
+*.pyc
+*.pyo
+opencode.json
