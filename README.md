@@ -78,7 +78,7 @@ source venv/bin/activate      # Linux/Mac
 venv\Scripts\activate         # Windows
 
 # 3. Instale as dependências
-pip install -r requirements.txt
+
 
 # 4. Configure suas credenciais
 cp .env.example .env
