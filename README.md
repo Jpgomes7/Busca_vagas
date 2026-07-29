@@ -11,6 +11,12 @@ repetitivo e fácil de deixar passar oportunidade. Esse projeto resolve
 isso: o robô fica de olho na Gupy por você e só te avisa quando surge
 algo novo — direto no Telegram, sem precisar abrir navegador.
 
+## 📸 Preview da Interface
+
+
+![Preview do App](print.png)
+
+
 ##  Como funciona
 
 1. O script consulta a **API pública que a própria Gupy usa** para
