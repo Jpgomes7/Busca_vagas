@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 import requests
 from dotenv import load_dotenv
 
-# --- 1. CONFIGURAÇÕES ---
 
 DIRETORIO_ATUAL = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(DIRETORIO_ATUAL, ".env"))
