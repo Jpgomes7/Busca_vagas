@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 import requests
 from dotenv import load_dotenv
 
-
 DIRETORIO_ATUAL = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(DIRETORIO_ATUAL, ".env"))
 
@@ -45,8 +44,8 @@ TRADUCAO_TIPO_VAGA = {
     "vacancy_type_freelancer": "Freelancer",
 }
 
-PAGINA_MAXIMA = 30      # trava de segurança: no máx. 30 páginas (~300 vagas) por filtro/ciclo
-LIMITE_VELHAS = 15      # se achar 15 vagas seguidas já enviadas, assume que "alcançou" e para
+PAGINA_MAXIMA = 30      
+LIMITE_VELHAS = 15      
 
 
 
@@ -88,7 +87,7 @@ def iniciar_banco():
     return conn, cursor
 
 
-# --- 4. ENVIO PARA O TELEGRAM ---
+
 
 def enviar_telegram(mensagem):
     payload = {
@@ -107,7 +106,7 @@ def enviar_telegram(mensagem):
         return False
 
 
-# --- 5. BUSCA NA API DA GUPY ---
+
 
 def buscar_vagas_estagio():
     print(f"\n🚀 [{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] Iniciando varredura de vagas de estágio...")
@@ -199,13 +198,13 @@ def buscar_vagas_estagio():
                         conn.commit()
                         print(f"✅ Enviada: {titulo[:50]}")
 
-                    time.sleep(1.5)  # não martela o Telegram nem a Gupy
+                    time.sleep(1.5) 
 
                 if vagas_velhas_seguidas >= LIMITE_VELHAS:
                     print("   🛑 Já alcançamos as vagas antigas. Encerrando esta busca.")
                     break
 
-                time.sleep(0.5)  # respiro entre páginas da API
+                time.sleep(0.5)  
 
     finally:
         conn.close()
@@ -213,7 +212,7 @@ def buscar_vagas_estagio():
     print(f"✅ [{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}] Varredura finalizada.")
 
 
-# --- 6. LOOP PRINCIPAL ---
+
 
 def main():
     if not TOKEN or not CHAT_ID:
@@ -229,7 +228,7 @@ def main():
         try:
             buscar_vagas_estagio()
         except Exception:
-            # Nunca deixa o bot morrer por causa de um erro pontual num ciclo
+            
             print("⚠️  Erro inesperado neste ciclo, mas o bot continua rodando:")
             traceback.print_exc()
 
